@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 25, 2023 at 05:52 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Host: localhost:3306
+-- Waktu pembuatan: 07 Bulan Mei 2024 pada 10.20
+-- Versi server: 8.0.30
+-- Versi PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,11 +26,11 @@ USE `axelledb`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `byprogram`
+-- Struktur dari tabel `byprogram`
 --
 
 CREATE TABLE `byprogram` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `kdprogram` varchar(50) NOT NULL,
   `jadwal_kelas` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE `byprogram` (
   `tpertemuan` varchar(25) NOT NULL,
   `tbiaya` varchar(150) NOT NULL,
   `deskripsi2` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `byprogram`
+-- Dumping data untuk tabel `byprogram`
 --
 
 INSERT INTO `byprogram` (`id`, `kdprogram`, `jadwal_kelas`, `nama`, `deskripsi`, `byawal`, `bybulan`, `tpertemuan`, `tbiaya`, `deskripsi2`) VALUES
@@ -52,39 +52,39 @@ INSERT INTO `byprogram` (`id`, `kdprogram`, `jadwal_kelas`, `nama`, `deskripsi`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_pembayaran`
+-- Struktur dari tabel `detail_pembayaran`
 --
 
 CREATE TABLE `detail_pembayaran` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `notransaksi` varchar(25) NOT NULL,
-  `cicilanke` int(11) NOT NULL,
+  `cicilanke` int NOT NULL,
+  `nama_program` varchar(150) NOT NULL,
+  `kategori` varchar(150) NOT NULL,
   `jumlahbayar` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `detail_pembayaran`
+-- Dumping data untuk tabel `detail_pembayaran`
 --
 
-INSERT INTO `detail_pembayaran` (`id`, `notransaksi`, `cicilanke`, `jumlahbayar`) VALUES
-(6, 'PEMBA001', 1, '125000'),
-(9, 'PEMBA002', 2, '125000'),
-(10, 'PEMBA003', 1, '125000');
+INSERT INTO `detail_pembayaran` (`id`, `notransaksi`, `cicilanke`, `nama_program`, `kategori`, `jumlahbayar`) VALUES
+(11, 'PEMBA004', 1, 'bahasa inggris', 'pre school', '125000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_program`
+-- Struktur dari tabel `kategori_program`
 --
 
 CREATE TABLE `kategori_program` (
   `kdkatprgm` varchar(50) NOT NULL,
   `nmkatprgm` varchar(50) NOT NULL,
   `ketkatprgm` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `kategori_program`
+-- Dumping data untuk tabel `kategori_program`
 --
 
 INSERT INTO `kategori_program` (`kdkatprgm`, `nmkatprgm`, `ketkatprgm`) VALUES
@@ -95,7 +95,27 @@ INSERT INTO `kategori_program` (`kdkatprgm`, `nmkatprgm`, `ketkatprgm`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int NOT NULL,
+  `nama` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `icon` varchar(500) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `menu`
+--
+
+INSERT INTO `menu` (`id`, `nama`, `icon`) VALUES
+(1, 'master data', ''),
+(2, 'transaksi', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -110,31 +130,31 @@ CREATE TABLE `pegawai` (
   `alamat` varchar(150) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `tgl_mulai` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
 INSERT INTO `pegawai` (`nip`, `nama`, `jenis_kelamin`, `tlahir`, `tgl_lahir`, `pendidikan`, `jurusan`, `notelp`, `alamat`, `email`, `tgl_mulai`) VALUES
-('123', 'elvira', '2', 'DEMAK', '2023-08-09', 'SLTA', 'Komputer', '52452345', 'demak raya', 'el@gmail.com', '2023-08-01');
+('5245', 'Sahadat', NULL, 'fadfad', NULL, '525`', 'fadfadf', 'gsdfgsd', 'gsgsdfgsdf', 'bxvb', '2023-09-30');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `notransaksi` varchar(25) NOT NULL,
   `nopendaftar` varchar(25) NOT NULL,
   `tgl_bayar` date NOT NULL,
   `deskripsi` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `pembayaran`
+-- Dumping data untuk tabel `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id`, `notransaksi`, `nopendaftar`, `tgl_bayar`, `deskripsi`) VALUES
@@ -145,32 +165,25 @@ INSERT INTO `pembayaran` (`id`, `notransaksi`, `nopendaftar`, `tgl_bayar`, `desk
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pendaftaran`
+-- Struktur dari tabel `pendaftaran`
 --
 
 CREATE TABLE `pendaftaran` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `tgl_pendaftaran` date NOT NULL,
   `nopendaftar` varchar(25) NOT NULL,
-  `kdprogram` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pendaftaran`
---
-
-INSERT INTO `pendaftaran` (`id`, `tgl_pendaftaran`, `nopendaftar`, `kdprogram`) VALUES
-(5, '2023-08-25', 'PENDAF001', 'KAT001'),
-(6, '2023-08-25', 'PENDAF002', 'KAT001');
+  `kdprogram` varchar(25) NOT NULL,
+  `nama_program` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nis` varchar(100) NOT NULL,
   `nama` varchar(150) DEFAULT NULL,
   `jenis_kelamin` varchar(1) DEFAULT NULL,
@@ -181,10 +194,10 @@ CREATE TABLE `siswa` (
   `alamat` varchar(150) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `nopendaftar` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`id`, `nis`, `nama`, `jenis_kelamin`, `tlahir`, `tgl_lahir`, `pendidikan`, `notelp`, `alamat`, `email`, `nopendaftar`) VALUES
@@ -194,115 +207,166 @@ INSERT INTO `siswa` (`id`, `nis`, `nama`, `jenis_kelamin`, `tlahir`, `tgl_lahir`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `submenu`
+--
+
+CREATE TABLE `submenu` (
+  `id` int NOT NULL,
+  `nama` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `idmaster` int NOT NULL,
+  `aktif` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `url` varchar(25) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `submenu`
+--
+
+INSERT INTO `submenu` (`id`, `nama`, `idmaster`, `aktif`, `url`) VALUES
+(1, 'pegawai', 1, 'm', 'pegawai'),
+(2, 'Pengguna (user)', 1, 'm', 'user'),
+(3, 'siswa', 1, 'm', 'siswa'),
+(4, 'kategori program', 1, 'm', 'kategori'),
+(5, 'biaya program', 1, 'm', 'by'),
+(6, 'pendaftaran', 2, 't', 'pendaftar'),
+(7, 'pembayaran administrasi', 2, 't', 'pembayaran');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(100) NOT NULL,
   `level` varchar(25) NOT NULL,
   `nip` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `level`, `nip`) VALUES
-(1, '1', '0cc175b9c0f1b6a831c399e269772661', 'admin', '123');
+(1, '1', 'c4ca4238a0b923820dcc509a6f75849b', 'admin', '5245');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `byprogram`
+-- Indeks untuk tabel `byprogram`
 --
 ALTER TABLE `byprogram`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `detail_pembayaran`
+-- Indeks untuk tabel `detail_pembayaran`
 --
 ALTER TABLE `detail_pembayaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kategori_program`
+-- Indeks untuk tabel `kategori_program`
 --
 ALTER TABLE `kategori_program`
   ADD PRIMARY KEY (`kdkatprgm`);
 
 --
--- Indexes for table `pegawai`
+-- Indeks untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indexes for table `pembayaran`
+-- Indeks untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pendaftaran`
+-- Indeks untuk tabel `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `siswa`
+-- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `submenu`
+--
+ALTER TABLE `submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `byprogram`
+-- AUTO_INCREMENT untuk tabel `byprogram`
 --
 ALTER TABLE `byprogram`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `detail_pembayaran`
+-- AUTO_INCREMENT untuk tabel `detail_pembayaran`
 --
 ALTER TABLE `detail_pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `pembayaran`
+-- AUTO_INCREMENT untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `pendaftaran`
+-- AUTO_INCREMENT untuk tabel `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `siswa`
+-- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `submenu`
+--
+ALTER TABLE `submenu`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
