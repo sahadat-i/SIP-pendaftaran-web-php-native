@@ -15,9 +15,9 @@ $nama_program   = explode('|',$kode)[1];
 $kategori       = explode('|',$kode)[2];
 $deskripsi      = mysqli_real_escape_string($kon, $_POST["deskripsi"]);
 
-$simpan = mysqli_query($kon, "INSERT INTO `pendaftaran`(`id`, `tgl_pendaftaran`, `nopendaftar`,`kdprogram`,`nama_program`) VALUES ('','$tgldaftar','$nopendaftar','$kdprogram','$nama_program')");
+$simpan = mysqli_query($kon, "INSERT INTO `pendaftaran`(`id`, `tgl_pendaftaran`, `nopendaftar`,`kdprogram`,`nama_program`) VALUES (null,'$tgldaftar','$nopendaftar','$kdprogram','$nama_program')");
 
-$simpan = mysqli_query($kon, "INSERT INTO `pembayaran`(`id`, `notransaksi`, `nopendaftar`,`tgl_bayar`,`deskripsi`) VALUES ('','$notransaksi','$nopendaftar','$tgldaftar','$deskripsi')");
+$simpan = mysqli_query($kon, "INSERT INTO `pembayaran`(`id`, `notransaksi`, `nopendaftar`,`tgl_bayar`,`deskripsi`) VALUES (null,'$notransaksi','$nopendaftar','$tgldaftar','$deskripsi')");
 
 $simpan1 = mysqli_query($kon, "INSERT INTO `detail_pembayaran`(`notransaksi`,`cicilanke`,`nama_program`,`kategori`,`jumlahbayar`) VALUES ('$notransaksi','$cicilan','$nama_program','$kategori','$tpembayaran')");
 
