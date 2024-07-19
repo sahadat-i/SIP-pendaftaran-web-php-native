@@ -54,6 +54,7 @@
                                     <th>Nama Program</th>
                                     <th>Kategori Program</th>
                                     <th>Tanggal Pendaftaran</th>
+                                    <th>Terbayar</th>
                                     <th>Status Pembayaran</th>
                                 </tr>
                             </thead>
@@ -101,8 +102,9 @@
                                         <td><?php echo ucwords($data["nama_program"])?></td>
                                         <td><?php echo ucwords($kategori["nmkatprgm"])?></td>
                                         <td><?php echo ucwords($data["tgl_pendaftaran"]); ?></td>
+                                        <td><?php echo ($telahBayar < $totalbyar) ? number_format($telahBayar, 0, ',', '.') : 'Lunas'; ?></td>
                                         <td>
-                                            <a href="index.php?q=histori&id=<?php echo $nopendaf?>&nm=<?php echo $data["nama_program"]?>" title="Lacak Histori Pembayaran" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" style="text-decoration: none;color:black">
+                                            <a href="index.php?q=histori&id=<?php echo $nopendaf?>&nm=<?php echo $data["nama_program"]?>" title="Lacak Histori" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" style="text-decoration: none;color:black">
                                                 
                                                 <?php echo ($telahBayar < $totalbyar) ? 'Belum Lunas' : 'Lunas'; ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
