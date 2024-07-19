@@ -89,7 +89,8 @@
                                     $kategori     = mysqli_fetch_assoc($dkategori);
                                     // ambil status lunas
                                     $totalbyar     = $progam['tbiaya'];
-                                    $ddetailbayar = mysqli_query($kon,"SELECT *,SUM(detail_pembayaran.jumlahbayar) AS telahbayar FROM `pembayaran` JOIN detail_pembayaran ON pembayaran.notransaksi = detail_pembayaran.notransaksi WHERE pembayaran.nopendaftar = '$nopendaf' and detail_pembayaran.nama_program ='$nama_program'");
+                                    $ddetailbayar = mysqli_query($kon,"SELECT SUM(dp.jumlahbayar) AS telahbayar FROM pembayaran p JOIN detail_pembayaran as dp ON p.notransaksi = dp.notransaksi WHERE p.nopendaftar = '$nopendaf' AND dp.nama_program = '$nama_program'");
+                                    // $ddetailbayar = mysqli_query($kon,"SELECT *,SUM(detail_pembayaran.jumlahbayar) AS telahbayar FROM `pembayaran` JOIN detail_pembayaran ON pembayaran.notransaksi = detail_pembayaran.notransaksi WHERE pembayaran.nopendaftar = '$nopendaf' and detail_pembayaran.nama_program ='$nama_program'");
 
                                     $telahBayar    = mysqli_fetch_assoc($ddetailbayar)['telahbayar'];
                                 ?>
