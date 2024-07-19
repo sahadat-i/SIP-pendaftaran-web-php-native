@@ -100,6 +100,7 @@
                   </div>
                   <div class="col-10">
                     <select class="form-control" name="kdprogram" id="pembayaran" required>
+                      <option value="">Pilih Program</option>
                     </select>
                   </div>
                 </div>
