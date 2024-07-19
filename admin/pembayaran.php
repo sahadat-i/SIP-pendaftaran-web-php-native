@@ -67,7 +67,7 @@
                                 if ($cek == 0) {
                                     echo"
                                     <tr>
-                                        <td colspan='4'>
+                                        <td colspan='8'>
                                             <div class='alert alert-info' role='alert'>
                                                 Data Tidak Di Temukan
                                             </div>
