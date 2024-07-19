@@ -11,12 +11,12 @@
     $nama_program   = $f['nama_program'];
     $ddetail        = mysqli_query($kon,"select nmkatprgm from kategori_program where kdkatprgm='$kdprogram'");
     $kategori       = mysqli_fetch_array($ddetail)['nmkatprgm'];
-?>
-<option value="<?php echo $kdprogram.'|'.$nama_program.'|'.$kategori?>">
-    <?php echo ucwords($nama_program) ." | ".ucwords($kategori)?>
-</option>
-<?php
-}
+    ?>
+    <option value="<?php echo $kdprogram.'|'.$nama_program.'|'.$kategori?>">
+        <?php echo ucwords($nama_program) ." | ".ucwords($kategori)?>
+    </option>
+    <?php
+    }
 } else {
 ?>
 <option value="">

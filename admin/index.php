@@ -236,6 +236,9 @@ include("../connectdb.php");
     }
     $('#nisadd').change(function() {
       var tamp = $(this).val();
+      $('#detail1').hide();
+      $("#pembayaran option[value!='']").remove();
+      $("#addpembayaran").prop("disabled", true);
       if (tamp) {
         $.ajax({
           type: 'POST',

@@ -67,7 +67,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                     <label class="form-label">Nis</label>
                   </div>
                   <div class="col-10">
-                    <select class="form-control" name="nis" id="" required>
+                    <select class="form-control" name="nis" id="nisadd" required>
                       <option value="">Pilih Nis Siswa</option>
                       <?php
                       $qdata = mysqli_query($kon, "SELECT * FROM `siswa`");
